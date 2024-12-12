@@ -1,15 +1,27 @@
-import DataFetchingDemo from "@/components/DataFetchingDemo";
-
+//* Submitting Data with Server Actions
+import ServerActionsDemo from "@/components/ServerActionsDemo";
 
 export default function Home() {
   return (
     <main>
-      <DataFetchingDemo />
+      <ServerActionsDemo />
     </main>
   );
 }
 
 
+//* Fetching Data with RSCs
+// import DataFetchingDemo from "@/components/DataFetchingDemo";
+
+// export default function Home() {
+//   return (
+//     <main>
+//       <DataFetchingDemo />
+//     </main>
+//   );
+// }
+
+//* Combining Server and Client component
 // import ClientDemo from "@/components/ClientDemo";
 // import RSCDemo from "@/components/RSCDemo";
 
