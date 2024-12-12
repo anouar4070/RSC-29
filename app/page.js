@@ -1,13 +1,38 @@
-//* Submitting Data with Server Actions
-import ServerActionsDemo from "@/components/ServerActionsDemo";
+//* Using the use() hook for Promises & Data Fetching
+import fs from 'node:fs/promises';
+import { Suspense } from 'react';
 
-export default function Home() {
+import UsePromiseDemo from '@/components/UsePromisesDemo';
+
+export default async function Home() {
+  const fetchUsersPromise = new Promise((resolve) =>
+    setTimeout(async () => {
+      const data = await fs.readFile('dummy-db.json', 'utf-8');
+      const users = JSON.parse(data);
+      resolve(users);
+    }, 2000)
+  );
+
   return (
     <main>
-      <ServerActionsDemo />
+      <Suspense fallback={<p>Loading users...</p>}>
+        <UsePromiseDemo usersPromise={fetchUsersPromise} />
+      </Suspense>
     </main>
   );
 }
+
+
+//* Submitting Data with Server Actions
+// import ServerActionsDemo from "@/components/ServerActionsDemo";
+
+// export default function Home() {
+//   return (
+//     <main>
+//       <ServerActionsDemo />
+//     </main>
+//   );
+// }
 
 
 //* Fetching Data with RSCs
